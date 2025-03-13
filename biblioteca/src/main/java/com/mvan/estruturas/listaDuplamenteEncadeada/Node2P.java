@@ -33,5 +33,12 @@ public class Node2P {
         this.nextPointer = nextPointer;
     }
 
+    @Override
+    public String toString() {
+        return "Node2P [data=" + data + "]";
+    }
+
+    
+
     
 }
