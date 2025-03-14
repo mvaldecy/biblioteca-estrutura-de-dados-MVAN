@@ -134,26 +134,32 @@ public class ListaDuplamenteEncadeada implements Estrutura<Node2P>{
 
     @Override
     public int length() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'length'");
+        return this.size;
     }
 
     @Override
     public Node2P first() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'first'");
+        return this.head.getNextPointer();
     }
 
     @Override
     public Node2P last() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'last'");
+        return this.trailer.getPrevPointer();
     }
 
     @Override
     public void printFoward() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'printFoward'");
+        StringBuilder sb = new StringBuilder();
+        sb.append("head <-> ");
+        Node2P n = this.head.getNextPointer();
+        while (n.nextPointer != null) {
+            sb.append(n.data + " <-> ");
+            n = n.getNextPointer();
+        }
+        sb.append("trailer");
+        sb.append(" | Size: " + this.size);
+
+        System.out.println(sb.toString());
     }
 
     @Override

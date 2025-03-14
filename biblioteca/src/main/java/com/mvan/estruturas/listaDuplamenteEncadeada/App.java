@@ -12,7 +12,7 @@ public class App {
         // lista.removeFirst();
         // lista.removeLast();
         // lista.remove(4);
-        System.out.println(lista);
+        lista.printFoward();;
 
     }
 }
