@@ -8,7 +8,7 @@ public class App {
         lista.addLast(new Node2P("3"));
         lista.addLast(new Node2P("4"));
         lista.addLast(new Node2P("5"));
-        lista.add(new Node2P("add position"), 3);
+        lista.addAt(new Node2P("add position"), 3);
         // lista.removeFirst();
         // lista.removeLast();
         // lista.remove(4);

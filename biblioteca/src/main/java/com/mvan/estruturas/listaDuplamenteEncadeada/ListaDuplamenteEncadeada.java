@@ -1,6 +1,8 @@
 package com.mvan.estruturas.listaDuplamenteEncadeada;
 
-public class ListaDuplamenteEncadeada {
+import com.mvan.estruturas.interfaces.Estrutura;
+
+public class ListaDuplamenteEncadeada implements Estrutura<Node2P>{
     public Node2P head;
     public Node2P trailer;
     public int size;
@@ -35,7 +37,7 @@ public class ListaDuplamenteEncadeada {
         this.size++;
     }
 
-    public void add(Node2P node, int position) {
+    public void addAt(Node2P node, int position) {
         checkPosition(position);
         if (position == 0) {
             addFirst(node);
@@ -72,7 +74,7 @@ public class ListaDuplamenteEncadeada {
         this.size--;
     }
 
-    public void remove(int position) {
+    public void removeAt(int position) {
         checkPosition(position);
         if(position == 0) {
             removeFirst();
@@ -108,5 +110,73 @@ public class ListaDuplamenteEncadeada {
         sb.append(" | Size: " + this.size);
 
         return sb.toString();
+    }
+
+    
+
+    @Override
+    public void removeBydata(String data) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'removeBydata'");
+    }
+
+    @Override
+    public Node2P find(int position) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'find'");
+    }
+
+    @Override
+    public boolean contains(String data) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'contains'");
+    }
+
+    @Override
+    public int length() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'length'");
+    }
+
+    @Override
+    public Node2P first() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'first'");
+    }
+
+    @Override
+    public Node2P last() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'last'");
+    }
+
+    @Override
+    public void printFoward() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'printFoward'");
+    }
+
+    @Override
+    public void printBackward() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'printBackward'");
+    }
+
+    @Override
+    public void reverse() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'reverse'");
+    }
+
+    @Override
+    public void order() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'order'");
+    }
+
+    @Override
+    public void clear() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'clear'");
     }
 }
