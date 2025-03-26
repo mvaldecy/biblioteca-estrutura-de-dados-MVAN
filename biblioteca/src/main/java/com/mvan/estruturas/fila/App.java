@@ -1,4 +1,4 @@
-package com.mvan.estruturas.FilaPrioritaria;
+package com.mvan.estruturas.fila;
 
 public class App {
 
@@ -27,9 +27,23 @@ public class App {
         pq.dequeue();
         System.out.println(pq);
     }
+
+    public static void runStack() {
+        Stack stack = new Stack();
+        stack.push(new NodeQueue("1"));
+        stack.push(new NodeQueue("2"));
+        stack.push(new NodeQueue("3"));
+        stack.push(new NodeQueue("4"));
+        stack.push(new NodeQueue("5"));
+        stack.push(new NodeQueue("6"));
+        System.out.println(stack);
+        stack.pop();
+        stack.pop();
+        System.out.println(stack);
+    }
     public static void main(String[] args) {
         //runQueue();
-        runPriorityQueue();
-
+        //runPriorityQueue();
+        runStack();
     }
 }

@@ -1,4 +1,4 @@
-package com.mvan.estruturas.FilaPrioritaria;
+package com.mvan.estruturas.fila;
 
 
 /**

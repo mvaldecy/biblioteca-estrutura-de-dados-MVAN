@@ -5,110 +5,126 @@ public class ListaEncadeada {
     protected int size;
 
     public ListaEncadeada() {
-        this.head = null;
+        this.head = new Node();
         this.size = 0;
     }
 
-    public int getSize() {
-        return this.size;
-    }
-
-    public Node getTrailer() {
-        Node node = this.head;
-        while (node.getPointer() != null) {
-            node = node.getPointer();
-        }
-        return node;
-    }
-
-    public void addFirst(Node node) {
-        node.setPointer(head);
-        this.head = node;
+    public void addFirst(Node n) {
+        n.setNextPointer(this.head.getNextPointer());
+        this.head.setNextPointer(n);
         this.size++;
     }
 
     public void addLast(Node node) {
-        Node n = this.head;
-        while (node.getPointer() != null) {
-            n = n.getPointer();
-        }
-
-        n.getPointer().setPointer(node);
-        
-        this.size++;
-    }
-
-    private void checkPosition(int position) {
-        if (position < 0 || position > size - 1) {
-            throw new IllegalArgumentException("Insira uma posição válida");
-        }
-    }
-
-    public void add(Node node, int position) {
-
-        checkPosition(position);
-
-        Node n = this.head;
-        int i = 0;
-        while (i < (position - 1)) {
-            n = n.getPointer();
-            i++;
-        }
-        
-        node.setPointer(n.getPointer());
-        n.setPointer(node);
-        this.size++;
-    }
-
-    public void removeFirst() {
-        this.head = head.getPointer();
-        this.size--;
-    }
-    public void removeLast() {
-        if (this.size < 1) {
-            throw new Error("Lista vazia");
-        }
-
-        Node n = this.head;
-        int i = 0;
-
-        while (i < (size - 2)) {
-            n = n.getPointer();
-            i++;
-        }
-
-        n.setPointer(null);
-        this.size--;
-
-    }
-
-    public void remove(int position){
-        checkPosition(position);
-
-        Node n = this.head;
-        int i = 0;
-
-        if (position == 0) {
-            removeFirst();
-        } else if (position == this.size - 1) {
-            removeLast();
+        if (this.size == 0) {
+            addFirst(node);
         } else {
 
         
+        Node n = this.head.getNextPointer();
+        while (n.getNextPointer() != null) {
 
-        while(i < (position - 1)) {
-            n = n.getPointer();
-            i++;
+            n = n.getNextPointer();
         }
-
-        n.setPointer(n.getPointer().getPointer());
-        this.size--;
+        n.setNextPointer(node);
+        this.size++;
         }
     }
 
+    
+    private void checkPosition(int pos) {
+        if(pos < 0 || pos > this.size) {
+            throw new Error("Insira uma posição válida");
+        }
+    }
+
+    public boolean isEmpty() {
+        return this.size == 0;
+    }
+
+    
+    public void add(Node node, int pos) {
+        checkPosition(pos);
+        if (this.size == 0) {
+            addFirst(node);
+        } else if (this.size == pos) {
+            addLast(node);
+        } else {
+            int i = 0;
+            Node n = this.head.getNextPointer();
+            while(i < pos - 1) {
+                n = n.getNextPointer();
+                i++;
+            }
+            node.setNextPointer(n.getNextPointer());
+            n.setNextPointer(node);
+            this.size++;
+        }
+    }
+
+    public Node removeFirst() {
+        if(isEmpty()) throw new Error("Lista vazia");
+        Node n = this.head.getNextPointer();
+        this.head.setNextPointer(n.getNextPointer());
+        n.setNextPointer(null);
+        this.size--;
+        return n;
+    }
+
+    public Node removeLast() {
+        if(isEmpty()) throw new Error("lista vazia");
+        Node n = this.head.getNextPointer();
+        int i = 0;
+        while( i < this.size - 2) {
+            n = n.getNextPointer();
+            i++;
+        }
+        Node trash = n.getNextPointer();
+        n.setNextPointer(null);
+        trash.setNextPointer(null);
+        this.size--;
+        return trash;
+    }
+
+    public Node remove(int pos) {
+        checkPosition(pos);
+        if (this.size == 0) {
+            return removeFirst();
+        } else if (pos == this.size - 1) {
+            return removeLast();
+        } else {
+            int i = 0;
+            Node n = this.head.getNextPointer();
+            while(i < pos - 1) {
+                n = n.getNextPointer();
+                i++;
+            }
+            Node trash = n.getNextPointer();
+            n.setNextPointer(trash.getNextPointer());
+            trash.setNextPointer(null);
+            this.size--;
+            return trash;
+        }
+    }
+
+
+    
+
     @Override
     public String toString() {
-        return "ListaEncadeada [head=" + head + ", size=" + size + "]";
+        StringBuilder sb = new StringBuilder();
+        sb.append("Head -> ");
+        int i = 0;
+        Node n = this.head.getNextPointer();
+        while (i < this.size) {
+            sb.append(n.getData());
+            sb.append(" -> ");
+            n = n.getNextPointer();
+            i++;
+        }
+
+        return sb.toString();
+        
     }
 
     

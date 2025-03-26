@@ -1,8 +1,7 @@
 package com.mvan.estruturas.listaDuplamenteEncadeada;
 
-import com.mvan.estruturas.interfaces.Estrutura;
 
-public class ListaDuplamenteEncadeada implements Estrutura<Node2P>{
+public class ListaDuplamenteEncadeada{
     public Node2P head;
     public Node2P trailer;
     public int size;
@@ -102,9 +101,11 @@ public class ListaDuplamenteEncadeada implements Estrutura<Node2P>{
         StringBuilder sb = new StringBuilder();
         sb.append("head <-> ");
         Node2P n = this.head.getNextPointer();
-        while (n.nextPointer != null) {
+        int i = 0;
+        while (i < this.size - 1) {
             sb.append(n.data + " <-> ");
             n = n.getNextPointer();
+            i++;
         }
         sb.append("trailer");
         sb.append(" | Size: " + this.size);
@@ -114,47 +115,26 @@ public class ListaDuplamenteEncadeada implements Estrutura<Node2P>{
 
     
 
-    @Override
-    public void removeBydata(String data) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'removeBydata'");
-    }
-
-    @Override
-    public Node2P find(int position) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'find'");
-    }
-
-    @Override
-    public boolean contains(String data) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'contains'");
-    }
-
-    @Override
-    public int length() {
-        return this.size;
-    }
-
-    @Override
+    
+    
     public Node2P first() {
         return this.head.getNextPointer();
     }
 
-    @Override
+    
     public Node2P last() {
         return this.trailer.getPrevPointer();
     }
 
-    @Override
+    
     public void printFoward() {
         StringBuilder sb = new StringBuilder();
         sb.append("head <-> ");
         Node2P n = this.head.getNextPointer();
-        while (n.nextPointer != null) {
+        while (n != this.trailer) {
             sb.append(n.data + " <-> ");
             n = n.getNextPointer();
+            
         }
         sb.append("trailer");
         sb.append(" | Size: " + this.size);
@@ -162,27 +142,21 @@ public class ListaDuplamenteEncadeada implements Estrutura<Node2P>{
         System.out.println(sb.toString());
     }
 
-    @Override
-    public void printBackward() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'printBackward'");
-    }
-
-    @Override
+    
     public void reverse() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'reverse'");
+        Node2P n = this.head;
+        while (n != null) {
+            Node2P aux = n.getNextPointer();
+            n.setNextPointer(n.getPrevPointer());
+            n.setPrevPointer(aux);
+            n = aux;
+            
+        }   
+        Node2P l = this.head;
+        this.head = this.trailer;
+        this.trailer = l;
+
     }
 
-    @Override
-    public void order() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'order'");
-    }
-
-    @Override
-    public void clear() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'clear'");
-    }
+    
 }

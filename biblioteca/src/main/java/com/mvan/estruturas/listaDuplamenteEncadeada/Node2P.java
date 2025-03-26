@@ -9,6 +9,8 @@ public class Node2P {
         this.data = data;
     }
 
+    public Node2P() {}
+
     public String getData() {
         return data;
     }
@@ -31,6 +33,11 @@ public class Node2P {
 
     public void setNextPointer(Node2P nextPointer) {
         this.nextPointer = nextPointer;
+    }
+
+    public void removePointers() {
+        this.nextPointer = null;
+        this.prevPointer = null;
     }
 
     @Override

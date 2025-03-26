@@ -8,6 +8,8 @@ public class Node {
         this.data = data;
     }
 
+    public Node(){}
+
     public String getData() {
         return this.data;
     }
@@ -16,11 +18,11 @@ public class Node {
         this.data = data;
     }
 
-    public Node getPointer() {
+    public Node getNextPointer() {
         return this.pointer;
     }
 
-    public void setPointer(Node pointer) {
+    public void setNextPointer(Node pointer) {
         this.pointer = pointer;
     }
 

@@ -1,4 +1,4 @@
-package com.mvan.estruturas.FilaPrioritaria;
+package com.mvan.estruturas.fila;
 
 public class Queue {
     int size;
@@ -45,8 +45,8 @@ public class Queue {
         sb.append("head -> ");
         NodeQueue nq = this.head.getNextPointer();
         int i = 0;
-        while (i < this.size) {
-            nq.getData();
+        while (i <= this.size) {
+            
             sb.append(nq.getData());
             sb.append(" -> ");
             nq = nq.getNextPointer();

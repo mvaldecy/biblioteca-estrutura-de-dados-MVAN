@@ -8,10 +8,12 @@ public class App
         lista.addFirst(new Node("1"));
         lista.addFirst(new Node("new head"));
         lista.addLast(new Node("last"));
-        lista.add(new Node("add por posição"), 1);
-        //lista.removeFirst();
-        //lista.removeLast();
-        lista.remove(0);
+        lista.addLast(new Node("5"));
+        lista.addLast(new Node("7"));
+        lista.add(new Node("add por posição"), 3);
+        lista.removeFirst();
+        lista.removeLast();
+        lista.remove(3);
         
         System.out.println(lista);
     }
